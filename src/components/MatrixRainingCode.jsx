@@ -17,8 +17,9 @@ const MatrixRainingCode = () => {
 
     // Définir la couleur selon la page actuelle
     let textColor = "#0f0"; // Vert par défaut
-    if (location.pathname === "/alpage") textColor = "#ff0000"; // Rouge
+    if (location.pathname === "/Projects") textColor = "#ff0000"; // Rouge
     if (location.pathname === "/Spaceship") textColor = "#ffffff"; // Blanc
+    if (location.pathname === "/Contact") textColor = "#1f51ff"; // Bleu
 
     let frameRate = 25;
     let lastFrameTime = Date.now();
