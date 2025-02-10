@@ -35,7 +35,7 @@ const Makeachoice = () => {
     <div
       className="w-full h-screen bg-cover bg-center"
       style={{
-        backgroundImage: 'url("./public/assets/img/take-pills.jpg")',
+        backgroundImage: 'url("./assets/img/take-pills.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
