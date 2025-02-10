@@ -71,7 +71,7 @@ const Projects = () => {
   return (
     <div
       className="relative h-screen w-screen bg-cover bg-center"
-      style={{ backgroundImage: 'url("public/assets/img/Alroom.webp")' }}
+      style={{ backgroundImage: 'url("/assets/img/Alroom.webp")' }}
     >
       {audioTriggered && <AudioWithSegment />}
       <div className="absolute top-[2.8%] left-1/2 transform -translate-x-1/2">
@@ -84,7 +84,7 @@ const Projects = () => {
           onMouseLeave={() => setHovered(false)}
         >
           <img
-            src="public/assets/img/HAL9000.svg"
+            src="/assets/img/HAL9000.svg"
             alt="HAL9000"
             className="cursor-pointer"
             onClick={handleClick}
