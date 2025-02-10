@@ -43,7 +43,7 @@ const Projects = () => {
       title: "Pensées Passagères",
       description: "REACT Webapp",
       top: "70%",
-      left: "50%",
+      left: "53%",
       translate: "translate(200px, -200px)",
       delay: "0.4s",
       url: "https://pensees-passageres.netlify.app/"

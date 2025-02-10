@@ -46,7 +46,7 @@ const Makeachoice = () => {
         <h1 className="pl-20 bg-black">
           <TypingTitle
             text={
-              "You take the blue pill: The story of this portfolio ends... but you can reach me out and together we can uncover the truth. \nYou take the red pill: You stay in Wonderland and I show you the depths of my Projects."
+              "You take the blue pill: The story of this portfolio ends... but you can reach me out and we can uncover the truth together. \nYou take the red pill: You stay in Wonderland and I show you the depths of my Projects."
             }
           />
         </h1>
