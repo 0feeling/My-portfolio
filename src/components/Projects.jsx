@@ -71,9 +71,15 @@ const Projects = () => {
   return (
     <div
       className="relative h-screen w-screen bg-cover bg-center"
-      style={{ backgroundImage: 'url("/assets/img/Alroom.webp")' }}
+      style={{
+        backgroundImage: 'url("/assets/img/Alroom.webp")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
     >
       {audioTriggered && <AudioWithSegment />}
+
       <div className="absolute top-[2.8%] left-1/2 transform -translate-x-1/2">
         <div
           className="relative flex justify-center items-center"
@@ -88,7 +94,11 @@ const Projects = () => {
             alt="HAL9000"
             className="cursor-pointer"
             onClick={handleClick}
-            style={{ width: "700px", height: "700px" }}
+            style={{
+              width: "70%", // Utiliser un pourcentage pour rendre l'image plus réactive
+              maxWidth: "700px", // Taille maximale sur grand écran
+              height: "auto" // Maintient le ratio d'aspect
+            }}
           />
 
           {/* Bulles de projets générées dynamiquement */}
