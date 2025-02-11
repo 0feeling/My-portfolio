@@ -5,11 +5,10 @@ import AudioWithSegment from "./AudioWithSegment";
 const Projects = () => {
   const [hovered, setHovered] = useState(false);
   const [delayedHover, setDelayedHover] = useState(false);
-  const [audioTriggered, setAudioTriggered] = useState(false); // Nouveau state
+  const [audioTriggered, setAudioTriggered] = useState(false);
   const navigate = useNavigate();
 
-  const hal9000Height = `calc(100vh - 80px)`; // Calcul de la hauteur de l'image HAL9000, moins la hauteur de la navbar
-  const hal9000Bottom = `calc(100vh - 80px)`; // Position du bas de l'image de HAL9000
+  const hal9000Height = `calc(100vh - 80px)`;
 
   useEffect(() => {
     let timeout;
@@ -27,17 +26,17 @@ const Projects = () => {
 
   const handleMouseEnter = () => {
     if (!audioTriggered) {
-      setAudioTriggered(true); // Déclenche l'audio une seule fois
+      setAudioTriggered(true);
     }
   };
 
-  // Tableau d'objet data
   const bubblesData = [
     {
       title: "Parole de Chien",
       description: "ONG's Website",
-      top: "70%",
-      left: "25%",
+      top: "60vh",
+      bottom: "auto",
+      left: "10vw",
       translate: "translate(-200px, -200px)",
       delay: "0.2s",
       url: "https://parole-de-chien.netlify.app/"
@@ -45,8 +44,9 @@ const Projects = () => {
     {
       title: "Pensées Passagères",
       description: "REACT Webapp",
-      top: "70%",
-      left: "53%",
+      top: "60vh",
+      bottom: "auto",
+      left: "23vw",
       translate: "translate(200px, -200px)",
       delay: "0.4s",
       url: "https://pensees-passageres.netlify.app/"
@@ -54,8 +54,9 @@ const Projects = () => {
     {
       title: "Harry Potter ",
       description: "Character's Searching",
-      top: "8%",
-      left: "25%",
+      top: "8vh",
+      bottom: "auto",
+      left: "10vw",
       translate: "translate(-200px, 200px)",
       delay: "0.6s",
       url: "harry-potter-vault.netlify.app",
@@ -64,8 +65,9 @@ const Projects = () => {
     {
       title: "Project 4",
       description: "Project",
-      top: "9%",
-      left: "53%",
+      top: "9vh",
+      bottom: "auto",
+      left: "23vw",
       translate: "translate(200px, 200px)",
       delay: "0.8s"
     }
@@ -105,13 +107,13 @@ const Projects = () => {
             }}
           />
 
-          {/* Bulles de projets générées dynamiquement */}
           {bubblesData.map(
             (
               {
                 title,
                 description,
                 top,
+                bottom,
                 left,
                 translate,
                 delay,
@@ -120,15 +122,15 @@ const Projects = () => {
               },
               index
             ) => {
-              // Vérification pour ajuster les bulles du haut
               const adjustedTop =
                 parseFloat(top) > 100 - parseFloat(hal9000Height)
                   ? "100%"
                   : top;
 
-              // Calcul du bas de l'image HAL9000 pour les bulles du bas
               const adjustedBottom =
-                parseFloat(top) < parseFloat(hal9000Bottom) ? "0%" : top;
+                parseFloat(bottom) > 100 - parseFloat(hal9000Height)
+                  ? "100%"
+                  : bottom;
 
               return (
                 <div
@@ -137,8 +139,8 @@ const Projects = () => {
                     delayedHover ? "opacity-100" : "opacity-0"
                   } ${className}`}
                   style={{
-                    top: adjustedTop, // Utilisation de la position ajustée
-                    bottom: adjustedBottom, // Limitation des bulles en bas
+                    top: adjustedTop,
+                    bottom: adjustedBottom,
                     left,
                     transform: delayedHover
                       ? `translate(-50%, -50%) ${translate}`
