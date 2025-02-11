@@ -95,9 +95,10 @@ const Projects = () => {
             className="cursor-pointer"
             onClick={handleClick}
             style={{
-              width: "70%", // Utiliser un pourcentage pour rendre l'image plus réactive
-              maxWidth: "700px", // Taille maximale sur grand écran
-              height: "auto" // Maintient le ratio d'aspect
+              width: "auto",
+              height: `calc(100vh - 80px)`, // Hauteur de l'image ajustée en fonction de la fenêtre
+              maxHeight: "calc(100vh - 80px)", // S'assure que l'image ne dépasse pas la taille de la fenêtre moins la navbar
+              objectFit: "contain" // Maintient le ratio de l'image
             }}
           />
 
