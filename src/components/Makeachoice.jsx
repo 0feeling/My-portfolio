@@ -43,7 +43,7 @@ const Makeachoice = () => {
       }}
     >
       <div className="w-full h-full" style={{ transform: "scaleX(-1)" }}>
-        <h1 className="pl-20 bg-black">
+        <h1 className="pl-5 bg-black p-4">
           <TypingTitle
             text={
               "You take the blue pill: The story of this portfolio ends... but you can reach me out and we can uncover the truth together. \nYou take the red pill: You stay in Wonderland and I show you the depths of my Projects."
@@ -51,14 +51,14 @@ const Makeachoice = () => {
           />
         </h1>
 
-        <div className="flex w-full h-full">
+        <div className="flex flex-col md:flex-row w-full h-full">
           {/* Partie droite (Red pill) */}
           <div
             onMouseEnter={() => handleAudioPlay(bluePillAudioRef)}
             onClick={handleRedPillClick}
             className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-50 hover:bg-opacity-10"
           >
-            <h1 className="text-white text-4xl font-mono text-center ml-12">
+            <h1 className="text-white text-2xl md:text-4xl font-mono text-center ml-4 md:ml-12">
               Contact
             </h1>
           </div>
@@ -69,7 +69,7 @@ const Makeachoice = () => {
             onClick={handleBluePillClick}
             className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-50 hover:bg-opacity-10"
           >
-            <h1 className="text-white text-4xl font-mono text-center mr-20">
+            <h1 className="text-white text-2xl md:text-4xl font-mono text-center mr-4 md:mr-20">
               Projects
             </h1>
           </div>

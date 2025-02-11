@@ -1,86 +1,59 @@
-// src/components/Navbar.jsx
 import React from "react";
-import { useLocation } from "react-router-dom"; // Importation du hook useLocation
+import { useLocation, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const location = useLocation(); // Utilisation du hook useLocation
+  const location = useLocation();
 
-  const isAlpage = location.pathname === "/Projects";
-  const isSpaceship = location.pathname === "/Spaceship";
-  const isContact = location.pathname === "/Contact";
+  const getNavClass = (path) => {
+    return location.pathname === path ? "text-active" : "hover:text-green-300";
+  };
+
+  const getTextColor = () => {
+    switch (location.pathname) {
+      case "/Projects":
+        return "text-red-500";
+      case "/Spaceship":
+        return "text-white";
+      case "/Contact":
+        return "text-blue-400";
+      case "/Stack":
+        return "text-yellow-400";
+      default:
+        return "";
+    }
+  };
 
   return (
-    <nav
-      className={`p-4 text-main w-full bg-black z-40 ${
-        isAlpage
-          ? "text-red-500"
-          : isSpaceship
-            ? "text-white"
-            : isContact
-              ? "text-blue-400"
-              : ""
-      }`}
-    >
+    <nav className={`p-4 text-main w-full bg-black z-40 ${getTextColor()}`}>
       <div className="flex justify-between items-center">
-        <h1 data-text className="text-2xl font-mono">
+        <h1 className="text-2xl font-mono">
           Timothée Meunier&apos;s Portfolio
         </h1>
         <ul className="flex space-x-6">
           <li>
-            <a
-              href="/"
-              className={
-                isAlpage || isSpaceship
-                  ? isAlpage
-                    ? "text-red-500"
-                    : "text-white"
-                  : "hover:text-green-300"
-              }
-            >
+            <NavLink to="/" className={getNavClass("/")}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="/AboutMe"
-              className={
-                isAlpage || isSpaceship
-                  ? isAlpage
-                    ? "text-red-500"
-                    : "text-white"
-                  : "hover:text-green-300"
-              }
-            >
-              AboutMe
-            </a>
-          </li>
-          <li>
-            <a
-              href="/Projects"
-              className={
-                isAlpage || isSpaceship
-                  ? isAlpage
-                    ? "text-red-500"
-                    : "text-white"
-                  : "hover:text-green-300"
-              }
-            >
+            <NavLink to="/Projects" className={getNavClass("/Projects")}>
               Projects
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="/Contact"
-              className={
-                isAlpage || isSpaceship
-                  ? isAlpage
-                    ? "text-red-500"
-                    : "text-white"
-                  : "hover:text-green-300"
-              }
-            >
+            <NavLink to="/Stack" className={getNavClass("/Stack")}>
+              Stack
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/AboutMe" className={getNavClass("/AboutMe")}>
+              AboutMe
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Contact" className={getNavClass("/Contact")}>
               Contact
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
