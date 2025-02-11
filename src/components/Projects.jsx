@@ -8,6 +8,8 @@ const Projects = () => {
   const [audioTriggered, setAudioTriggered] = useState(false); // Nouveau state
   const navigate = useNavigate();
 
+  const hal9000Height = `calc(100vh - 80px)`; // Calcul de la hauteur de l'image HAL9000, moins la hauteur de la navbar
+
   useEffect(() => {
     let timeout;
     if (!hovered) {
@@ -96,9 +98,9 @@ const Projects = () => {
             onClick={handleClick}
             style={{
               width: "auto",
-              height: `calc(100vh - 80px)`, // Hauteur de l'image ajustée en fonction de la fenêtre
-              maxHeight: "calc(100vh - 80px)", // S'assure que l'image ne dépasse pas la taille de la fenêtre moins la navbar
-              objectFit: "contain" // Maintient le ratio de l'image
+              height: hal9000Height,
+              maxHeight: hal9000Height,
+              objectFit: "contain"
             }}
           />
 
@@ -116,34 +118,42 @@ const Projects = () => {
                 className
               },
               index
-            ) => (
-              <div
-                key={index}
-                className={`absolute transition-all duration-700 ${
-                  delayedHover ? "opacity-100" : "opacity-0"
-                } ${className}`}
-                style={{
-                  top,
-                  left,
-                  transform: delayedHover
-                    ? `translate(-50%, -50%) ${translate}`
-                    : "translate(-50%, -50%)",
-                  transitionDelay: hovered ? delay : "0.3s"
-                }}
-                onClick={() => window.open(url, "_blank")}
-              >
+            ) => {
+              // On vérifie ici si la position `top` dépasse la hauteur de l'image HAL9000
+              const adjustedTop =
+                parseFloat(top) > 100 - parseFloat(hal9000Height)
+                  ? "100%"
+                  : top;
+
+              return (
                 <div
-                  className="absolute top-0 left-0 bg-black bg-opacity-85 text-white text-center cursor-pointer transform transition-all rounded-full duration-500 outline outline-2 outline-white border-4 border-transparent hover:border-red-500 hover:outline-none aspect-square items-center justify-center pt-20 pb-14"
+                  key={index}
+                  className={`absolute transition-all duration-700 ${
+                    delayedHover ? "opacity-100" : "opacity-0"
+                  } ${className}`}
                   style={{
-                    transform: delayedHover ? translate : "none",
-                    width: "200px"
+                    top: adjustedTop, // Utilisation de la position ajustée
+                    left,
+                    transform: delayedHover
+                      ? `translate(-50%, -50%) ${translate}`
+                      : "translate(-50%, -50%)",
+                    transitionDelay: hovered ? delay : "0.3s"
                   }}
+                  onClick={() => window.open(url, "_blank")}
                 >
-                  <h2>{title}</h2>
-                  <p>{description}</p>
+                  <div
+                    className="absolute top-0 left-0 bg-black bg-opacity-85 text-white text-center cursor-pointer transform transition-all rounded-full duration-500 outline outline-2 outline-white border-4 border-transparent hover:border-red-500 hover:outline-none aspect-square items-center justify-center pt-20 pb-14"
+                    style={{
+                      transform: delayedHover ? translate : "none",
+                      width: "200px"
+                    }}
+                  >
+                    <h2>{title}</h2>
+                    <p>{description}</p>
+                  </div>
                 </div>
-              </div>
-            )
+              );
+            }
           )}
         </div>
       </div>
