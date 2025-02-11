@@ -9,6 +9,7 @@ const Projects = () => {
   const navigate = useNavigate();
 
   const hal9000Height = `calc(100vh - 80px)`; // Calcul de la hauteur de l'image HAL9000, moins la hauteur de la navbar
+  const hal9000Bottom = `calc(100vh - 80px)`; // Position du bas de l'image de HAL9000
 
   useEffect(() => {
     let timeout;
@@ -119,11 +120,15 @@ const Projects = () => {
               },
               index
             ) => {
-              // On vérifie ici si la position `top` dépasse la hauteur de l'image HAL9000
+              // Vérification pour ajuster les bulles du haut
               const adjustedTop =
                 parseFloat(top) > 100 - parseFloat(hal9000Height)
                   ? "100%"
                   : top;
+
+              // Calcul du bas de l'image HAL9000 pour les bulles du bas
+              const adjustedBottom =
+                parseFloat(top) < parseFloat(hal9000Bottom) ? "0%" : top;
 
               return (
                 <div
@@ -133,6 +138,7 @@ const Projects = () => {
                   } ${className}`}
                   style={{
                     top: adjustedTop, // Utilisation de la position ajustée
+                    bottom: adjustedBottom, // Limitation des bulles en bas
                     left,
                     transform: delayedHover
                       ? `translate(-50%, -50%) ${translate}`
