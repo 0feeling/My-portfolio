@@ -7,13 +7,13 @@ const Spaceship = () => {
 
   // Fonction pour rediriger l'utilisateur
   const handleClick = () => {
-    navigate("/matrix-pills");
+    navigate("/Makeachoice");
   };
 
   // Redirection automatique après x secondes
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/matrix-pills");
+      navigate("/Makeachoice");
     }, 2000);
 
     return () => clearTimeout(timer); // Nettoyage du timer si le composant est démonté

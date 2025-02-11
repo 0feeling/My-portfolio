@@ -58,7 +58,7 @@ const Makeachoice = () => {
             onClick={handleRedPillClick}
             className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-50 hover:bg-opacity-10"
           >
-            <h1 className="text-white text-2xl md:text-4xl font-mono text-center ml-4 md:ml-12">
+            <h1 className="text-white text-2xl md:text-4xl font-mono text-center ml-4 mb-14 md:ml-12 mb-20">
               Contact
             </h1>
           </div>
@@ -69,7 +69,7 @@ const Makeachoice = () => {
             onClick={handleBluePillClick}
             className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-50 hover:bg-opacity-10"
           >
-            <h1 className="text-white text-2xl md:text-4xl font-mono text-center mr-4 md:mr-20">
+            <h1 className="text-white text-2xl md:text-4xl font-mono text-center mb-14 mr-4 md: mb-20 mr-20">
               Projects
             </h1>
           </div>

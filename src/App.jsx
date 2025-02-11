@@ -7,7 +7,6 @@ import "./tailwind.css";
 import "./index.css";
 import Navbar from "./components/Navbar";
 import Spaceship from "./components/Spaceship";
-import SketchfabViewer from "./components/SketchfabViewer"; // Modèle 3D interactif
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Makeachoice from "./components/Makeachoice";
@@ -30,13 +29,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/spaceship" element={<Spaceship />} />
-            <Route path="/matrix-pills" element={<SketchfabViewer />} />
             <Route path="/Projects" element={<Projects />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Makeachoice" element={<Makeachoice />} />
             <Route path="/Stack" element={<Stack />} />
-
-            {/* Tu peux ajouter ici d'autres routes pour d'autres pages */}
           </Routes>
         </div>
       </div>

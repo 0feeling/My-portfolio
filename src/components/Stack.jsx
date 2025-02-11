@@ -50,7 +50,7 @@ const Stack = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white px-4">
+    <div className="min-h-screen flex items-center justify-center text-white px-4">
       <div
         className="w-full max-w-3xl p-6 bg-gray-900 rounded-xl shadow-lg border border-yellow-500 relative overflow-hidden
                       before:absolute before:inset-0 before:bg-yellow-500 before:opacity-10 before:blur-lg"

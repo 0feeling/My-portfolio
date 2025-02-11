@@ -20,6 +20,7 @@ const MatrixRainingCode = () => {
     if (location.pathname === "/Projects") textColor = "#ff0000"; // Rouge
     if (location.pathname === "/Spaceship") textColor = "#ffffff"; // Blanc
     if (location.pathname === "/Contact") textColor = "#1f51ff"; // Bleu
+    if (location.pathname === "/Stack") textColor = "#fbbf24"; // Jaune
 
     let frameRate = 25;
     let lastFrameTime = Date.now();

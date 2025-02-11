@@ -37,7 +37,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white px-4">
+    <div className="min-h-screen flex items-center justify-center text-white px-4">
       <div
         className="w-full max-w-3xl p-6 bg-gray-900 rounded-xl shadow-lg border border-blue-500 relative overflow-hidden
                       before:absolute before:inset-0 before:bg-blue-500 before:opacity-10 before:blur-lg"
@@ -51,11 +51,11 @@ const Contact = () => {
         <p className="text-gray-300 text-center mb-6 text-lg md:text-xl leading-relaxed">
           Vous avez aimé ce portfolio ? Et si nous donnions vie à votre projet ?
           <span className="block text-blue-400 mt-2 font-semibold">
-            Original, audacieux ou résolument professionnel : faisons de votre
+            Original, audacieux ou résolument professionnel: faisons de votre
             idée une réalité.
           </span>
           <span className="block mt-4 font-semibold text-gray-100">
-            Créativité, technicité et sens du détail : discutons-en !
+            Créativité, technicité et sens du détail: discutons-en !
           </span>
         </p>
 
