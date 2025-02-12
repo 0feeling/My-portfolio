@@ -52,14 +52,14 @@ const Projects = () => {
       url: "https://pensees-passageres.netlify.app/"
     },
     {
-      title: "Harry Potter ",
+      title: "Harry Potter",
       description: "Character's Searching",
       top: "8vh",
       bottom: "auto",
       left: "10vw",
       translate: "translate(-200px, 200px)",
       delay: "0.6s",
-      url: "harry-potter-vault.netlify.app",
+      url: "https://harry-potter-vault.netlify.app/",
       className: ""
     },
     {
