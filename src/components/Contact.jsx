@@ -51,7 +51,7 @@ const Contact = () => {
         <p className="text-gray-300 text-center mb-6 text-lg md:text-xl leading-relaxed">
           Vous avez aimé ce portfolio ? Et si nous donnions vie à votre projet ?
           <span className="block text-blue-400 mt-2 font-semibold">
-            Original, audacieux ou résolument professionnel: faisons de votre
+            Originale, audacieucieuse ou résolument professionnelle: faisons de votre
             idée une réalité.
           </span>
           <span className="block mt-4 font-semibold text-gray-100">
