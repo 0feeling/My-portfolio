@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className={`p-4 w-full bg-black z-40 ${getTextColor()}`}>
       <div className="flex justify-between items-center">
-        {/* H1 devient un lien vers la home */}
+        {/* H1 = lien vers la home */}
         <NavLink
           to="/"
           className={`text-2xl font-mono ${getTextColor()} hover:opacity-80 transition-opacity duration-200`}
@@ -38,7 +38,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? `${getTextColor()} text-active`
-                  : "hover:text-custom-green transition-colors duration-200"
+                  : "hover:text-red-500 transition-colors duration-200"
               }
             >
               Projects
@@ -50,7 +50,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? `${getTextColor()} text-active`
-                  : "hover:text-custom-green transition-colors duration-200"
+                  : "hover:text-yellow-400 transition-colors duration-200"
               }
             >
               Stack
@@ -62,7 +62,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? `${getTextColor()} text-active`
-                  : "hover:text-custom-green transition-colors duration-200"
+                  : "hover:text-pink-400 transition-colors duration-200"
               }
             >
               AboutMe
@@ -74,7 +74,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? `${getTextColor()} text-active`
-                  : "hover:text-custom-green transition-colors duration-200"
+                  : "hover:text-blue-400 transition-colors duration-200"
               }
             >
               Contact
