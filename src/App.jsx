@@ -11,6 +11,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Makeachoice from "./components/Makeachoice";
 import Stack from "./components/Stack";
+import AboutMe from "./components/AboutMe";
 
 const App = () => {
   return (
@@ -28,11 +29,12 @@ const App = () => {
           {/* Routes pour la page d'accueil et autres pages */}
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/spaceship" element={<Spaceship />} />
+            <Route path="/Spaceship" element={<Spaceship />} />
             <Route path="/Projects" element={<Projects />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Makeachoice" element={<Makeachoice />} />
             <Route path="/Stack" element={<Stack />} />
+            <Route path="/AboutMe" element={<AboutMe />} />
           </Routes>
         </div>
       </div>

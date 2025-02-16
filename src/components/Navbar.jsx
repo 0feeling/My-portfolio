@@ -14,6 +14,8 @@ const Navbar = () => {
         return "text-blue-400";
       case "/Stack":
         return "text-yellow-400";
+      case "/AboutMe":
+        return "text-pink-400";
       default:
         return "text-custom-green"; // Classe CSS personnalisée pour la couleur par défaut
     }
@@ -22,22 +24,14 @@ const Navbar = () => {
   return (
     <nav className={`p-4 w-full bg-black z-40 ${getTextColor()}`}>
       <div className="flex justify-between items-center">
-        <h1 className={`text-2xl font-mono ${getTextColor()}`}>
+        {/* H1 devient un lien vers la home */}
+        <NavLink
+          to="/"
+          className={`text-2xl font-mono ${getTextColor()} hover:opacity-80 transition-opacity duration-200`}
+        >
           Timothée Meunier&apos;s Portfolio
-        </h1>
+        </NavLink>
         <ul className="flex space-x-6">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? `${getTextColor()} text-active`
-                  : "hover:text-custom-green transition-colors duration-200"
-              }
-            >
-              Home
-            </NavLink>
-          </li>
           <li>
             <NavLink
               to="/Projects"
