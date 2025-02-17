@@ -39,11 +39,12 @@ const Navbar = () => {
         </NavLink>
 
         {/* Bouton menu burger pour mobile */}
-        <button
-          className="md:hidden text-white focus:outline-none"
-          onClick={toggleMenu}
-        >
-          {isOpen ? <X size={30} /> : <Menu size={30} />}
+        <button className="md:hidden focus:outline-none" onClick={toggleMenu}>
+          {isOpen ? (
+            <X size={30} className={getTextColor()} />
+          ) : (
+            <Menu size={30} className={getTextColor()} />
+          )}
         </button>
 
         {/* Menu Desktop */}
@@ -105,7 +106,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/Projects"
-              className="text-white hover:text-red-500 transition-colors duration-200"
+              className={`${getTextColor()} hover:text-red-500 transition-colors duration-200`}
               onClick={toggleMenu}
             >
               Projects
@@ -114,7 +115,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/Stack"
-              className="text-white hover:text-yellow-400 transition-colors duration-200"
+              className={`${getTextColor()} hover:text-yellow-400 transition-colors duration-200`}
               onClick={toggleMenu}
             >
               Stack
@@ -123,7 +124,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/AboutMe"
-              className="text-white hover:text-pink-400 transition-colors duration-200"
+              className={`${getTextColor()} hover:text-pink-400 transition-colors duration-200`}
               onClick={toggleMenu}
             >
               AboutMe
@@ -132,7 +133,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/Contact"
-              className="text-white hover:text-blue-400 transition-colors duration-200"
+              className={`${getTextColor()} hover:text-blue-400 transition-colors duration-200`}
               onClick={toggleMenu}
             >
               Contact
