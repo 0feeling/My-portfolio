@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // Icônes pour le menu burger
 
 const Navbar = () => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   const getTextColor = () => {
     switch (location.pathname) {
@@ -17,7 +23,7 @@ const Navbar = () => {
       case "/AboutMe":
         return "text-pink-400";
       default:
-        return "text-custom-green"; // Classe CSS personnalisée pour la couleur par défaut
+        return "text-custom-green";
     }
   };
 
@@ -31,7 +37,17 @@ const Navbar = () => {
         >
           Timothée Meunier&apos;s Portfolio
         </NavLink>
-        <ul className="flex space-x-6">
+
+        {/* Bouton menu burger pour mobile */}
+        <button
+          className="md:hidden text-white focus:outline-none"
+          onClick={toggleMenu}
+        >
+          {isOpen ? <X size={30} /> : <Menu size={30} />}
+        </button>
+
+        {/* Menu Desktop */}
+        <ul className="hidden md:flex space-x-6">
           <li>
             <NavLink
               to="/Projects"
@@ -82,6 +98,48 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+
+      {/* Menu mobile */}
+      {isOpen && (
+        <ul className="md:hidden flex flex-col items-center bg-black py-4 space-y-4">
+          <li>
+            <NavLink
+              to="/Projects"
+              className="text-white hover:text-red-500 transition-colors duration-200"
+              onClick={toggleMenu}
+            >
+              Projects
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/Stack"
+              className="text-white hover:text-yellow-400 transition-colors duration-200"
+              onClick={toggleMenu}
+            >
+              Stack
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/AboutMe"
+              className="text-white hover:text-pink-400 transition-colors duration-200"
+              onClick={toggleMenu}
+            >
+              AboutMe
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/Contact"
+              className="text-white hover:text-blue-400 transition-colors duration-200"
+              onClick={toggleMenu}
+            >
+              Contact
+            </NavLink>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };

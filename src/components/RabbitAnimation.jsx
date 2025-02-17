@@ -4,6 +4,20 @@ import { useNavigate } from "react-router-dom"; // Hook pour la navigation
 const RabbitAnimation = () => {
   const navigate = useNavigate(); // Hook pour naviguer vers une autre page
 
+  // Gestion du rendu en fonction de la taille d'écran
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Change le seuil si besoin
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Ne rien rendre sur mobile
+  if (isMobile) return null;
+
   const svgCoordinates = {
     top: 60, // coordonnée y initiale
     left: 1300 // coordonnée x initiale
