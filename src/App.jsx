@@ -12,33 +12,36 @@ import Contact from "./components/Contact";
 import Makeachoice from "./components/Makeachoice";
 import Stack from "./components/Stack";
 import AboutMe from "./components/AboutMe";
+import { AudioProvider } from "./components/AudioContext";
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Navbar />
-      </div>
-      <div className="font-mono">
-        {/* Conteneur avec l'animation Matrix */}
-        <div className="relative min-h-screen">
-          <div className="absolute top-0 left-0 w-full h-full z-[-1]">
-            <MatrixRainingCode />
-          </div>
-
-          {/* Routes pour la page d'accueil et autres pages */}
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/Spaceship" element={<Spaceship />} />
-            <Route path="/Projects" element={<Projects />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/Makeachoice" element={<Makeachoice />} />
-            <Route path="/Stack" element={<Stack />} />
-            <Route path="/AboutMe" element={<AboutMe />} />
-          </Routes>
+    <AudioProvider>
+      <Router>
+        <div>
+          <Navbar />
         </div>
-      </div>
-    </Router>
+        <div className="font-mono">
+          {/* Conteneur avec l'animation Matrix */}
+          <div className="relative min-h-screen">
+            <div className="absolute top-0 left-0 w-full h-full z-[-1]">
+              <MatrixRainingCode />
+            </div>
+
+            {/* Routes pour la page d'accueil et autres pages */}
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/Spaceship" element={<Spaceship />} />
+              <Route path="/Projects" element={<Projects />} />
+              <Route path="/Contact" element={<Contact />} />
+              <Route path="/Makeachoice" element={<Makeachoice />} />
+              <Route path="/Stack" element={<Stack />} />
+              <Route path="/AboutMe" element={<AboutMe />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </AudioProvider>
   );
 };
 

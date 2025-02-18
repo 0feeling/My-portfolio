@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Icônes pour le menu burger
+import { FiVolume2, FiVolumeX } from "react-icons/fi"; // Icônes de speaker
+import { useAudio } from "./AudioContext";
 
 const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { isMuted, toggleMute } = useAudio(); // Récupération du contexte audio
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,12 +34,22 @@ const Navbar = () => {
     <nav className={`p-4 w-full bg-black z-40 ${getTextColor()}`}>
       <div className="flex justify-between items-center">
         {/* H1 = lien vers la home */}
-        <NavLink
-          to="/"
-          className={`text-2xl font-mono ${getTextColor()} hover:opacity-80 transition-opacity duration-200`}
-        >
-          Timothée Meunier&apos;s Portfolio
-        </NavLink>
+        <div className="flex items-center space-x-4">
+          {/* H1 = lien vers la home */}
+          <NavLink
+            to="/"
+            className={`text-2xl font-mono ${getTextColor()} hover:opacity-80 transition-opacity duration-200`}
+          >
+            Timothée Meunier&apos;s Portfolio
+          </NavLink>
+          {/* Bouton speaker */}
+          <button
+            onClick={toggleMute}
+            className="p-2 rounded-full hover:bg-black transition"
+          >
+            {isMuted ? <FiVolumeX size={24} /> : <FiVolume2 size={24} />}
+          </button>
+        </div>
 
         {/* Bouton menu burger pour mobile */}
         <button className="md:hidden focus:outline-none" onClick={toggleMenu}>
@@ -53,9 +66,12 @@ const Navbar = () => {
             <NavLink
               to="/Projects"
               className={({ isActive }) =>
-                isActive
-                  ? `${getTextColor()} text-active`
-                  : "hover:text-red-500 transition-colors duration-200"
+                `relative ${
+                  isActive
+                    ? `${getTextColor()} text-active`
+                    : "hover:text-red-500 transition-colors duration-200"
+                } 
+    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-red-500`
               }
             >
               Projects
@@ -65,9 +81,12 @@ const Navbar = () => {
             <NavLink
               to="/Stack"
               className={({ isActive }) =>
-                isActive
-                  ? `${getTextColor()} text-active`
-                  : "hover:text-yellow-400 transition-colors duration-200"
+                `relative ${
+                  isActive
+                    ? `${getTextColor()} text-active`
+                    : "hover:text-yellow-400 transition-colors duration-200"
+                } 
+    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-yellow-400`
               }
             >
               Stack
@@ -77,9 +96,12 @@ const Navbar = () => {
             <NavLink
               to="/AboutMe"
               className={({ isActive }) =>
-                isActive
-                  ? `${getTextColor()} text-active`
-                  : "hover:text-pink-400 transition-colors duration-200"
+                `relative ${
+                  isActive
+                    ? `${getTextColor()} text-active`
+                    : "hover:text-pink-400 transition-colors duration-200"
+                } 
+    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-pink-400`
               }
             >
               AboutMe
@@ -89,9 +111,12 @@ const Navbar = () => {
             <NavLink
               to="/Contact"
               className={({ isActive }) =>
-                isActive
-                  ? `${getTextColor()} text-active`
-                  : "hover:text-blue-400 transition-colors duration-200"
+                `relative ${
+                  isActive
+                    ? `${getTextColor()} text-active`
+                    : "hover:text-blue-400 transition-colors duration-200"
+                } 
+    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-blue-400`
               }
             >
               Contact

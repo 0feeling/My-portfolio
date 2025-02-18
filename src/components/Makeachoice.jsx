@@ -1,23 +1,43 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TypingTitle from "./TypingTitle";
+import { useAudio } from "./AudioContext";
 
 const Makeachoice = () => {
   const navigate = useNavigate();
   const redPillAudioRef = useRef(null);
   const bluePillAudioRef = useRef(null);
+  const { isMuted } = useAudio();
   const [currentAudio, setCurrentAudio] = useState(null);
   const [hasClickedRedPill, setHasClickedRedPill] = useState(false);
   const [hasClickedBluePill, setHasClickedBluePill] = useState(false);
 
   const isMobile = window.innerWidth < 950;
 
+  useEffect(() => {
+    if (bluePillAudioRef.current) {
+      bluePillAudioRef.current.muted = isMuted;
+    }
+    if (redPillAudioRef.current) {
+      redPillAudioRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  // Gestion de la navigation selon la version mobile/desktop
   const handleNavigation = (path, pillColor) => {
-    if (pillColor === "red" && !hasClickedRedPill) {
-      setHasClickedRedPill(true);
-    } else if (pillColor === "blue" && !hasClickedBluePill) {
-      setHasClickedBluePill(true);
+    if (isMobile) {
+      // Pour mobile : première fois, activer la pill sans naviguer
+      if (pillColor === "red" && !hasClickedRedPill) {
+        setHasClickedRedPill(true);
+        return; // Ne navigue pas
+      } else if (pillColor === "blue" && !hasClickedBluePill) {
+        setHasClickedBluePill(true);
+        return; // Ne navigue pas
+      } else {
+        navigate(path); // Si déjà activé, navigation
+      }
     } else {
+      // Pour desktop : navigation immédiate
       navigate(path);
     }
   };
@@ -38,7 +58,7 @@ const Makeachoice = () => {
       <h1 className="pl-5 bg-black p-4">
         <TypingTitle
           text={
-            "You take the blue pill: The story of this portfolio ends... but if you reach me out, we can uncover the truth together. \nYou take the red pill: You stay in Wonderland and I show you the depths of my Projects."
+            "You take the blue pill: The story of this portfolio ends... but if you reach me out, we can uncover the truth together. \nYou take the red pill: You stay in Wonderland and I show you the depths of my Projects..."
           }
         />
       </h1>
