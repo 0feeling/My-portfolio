@@ -66,30 +66,6 @@ const Makeachoice = () => {
 
       {/* Pour desktop, les pills restent en flex-row. Pour mobile, on passe en flex-row pour les placer côte à côte */}
       <div className={`flex w-full flex-row h-[calc(100vh-100px)]`}>
-        {/* Red pill */}
-        <div
-          onMouseEnter={() => !isMobile && handleAudioPlay(redPillAudioRef)}
-          onClick={() => {
-            handleAudioPlay(redPillAudioRef);
-            handleNavigation("/Projects", "red");
-          }}
-          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all"
-          style={{ height: isMobile ? "calc(100vh - 100px)" : "auto" }}
-        >
-          <img
-            src={
-              isMobile
-                ? "/assets/mobil-red-pill.svg"
-                : "/assets/take-pill-red1.svg"
-            }
-            alt="Red Pill"
-            className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
-          />
-          <div className="absolute text-white font-bold text-xl transform translate-x-[27%] translate-y-[95%] md:text-3xl">
-            Projects
-          </div>
-        </div>
-
         {/* Blue pill */}
         <div
           onMouseEnter={() => !isMobile && handleAudioPlay(bluePillAudioRef)}
@@ -111,6 +87,29 @@ const Makeachoice = () => {
           />
           <div className="absolute text-white font-bold text-xl transform translate-x-[-20%] translate-y-[95%] md:text-3xl">
             Contact
+          </div>
+        </div>
+        {/* Red pill */}
+        <div
+          onMouseEnter={() => !isMobile && handleAudioPlay(redPillAudioRef)}
+          onClick={() => {
+            handleAudioPlay(redPillAudioRef);
+            handleNavigation("/Projects", "red");
+          }}
+          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all"
+          style={{ height: isMobile ? "calc(100vh - 100px)" : "auto" }}
+        >
+          <img
+            src={
+              isMobile
+                ? "/assets/mobil-red-pill.svg"
+                : "/assets/take-pill-red1.svg"
+            }
+            alt="Red Pill"
+            className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
+          />
+          <div className="absolute text-white font-bold text-xl transform translate-x-[27%] translate-y-[95%] md:text-3xl">
+            Projects
           </div>
         </div>
       </div>
