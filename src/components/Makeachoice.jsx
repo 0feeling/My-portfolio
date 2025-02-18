@@ -12,8 +12,8 @@ const Makeachoice = () => {
   const [hasClickedRedPill, setHasClickedRedPill] = useState(false);
   const [hasClickedBluePill, setHasClickedBluePill] = useState(false);
 
-  // Détermine si on est en mobile (<950)
-  const isMobile = window.innerWidth < 950;
+  // Détermine si on est en mobile
+  const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
     if (bluePillAudioRef.current) {
