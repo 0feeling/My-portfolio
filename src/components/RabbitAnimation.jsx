@@ -8,7 +8,7 @@ const RabbitAnimation = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // Change le seuil si besoin
+      setIsMobile(window.innerWidth < 950); // Change le seuil si besoin
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
