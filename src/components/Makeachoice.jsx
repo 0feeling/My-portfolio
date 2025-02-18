@@ -7,35 +7,23 @@ const Makeachoice = () => {
   const redPillAudioRef = useRef(null);
   const bluePillAudioRef = useRef(null);
   const [currentAudio, setCurrentAudio] = useState(null);
-  const titleRef = useRef(null);
+  const [hasClickedRedPill, setHasClickedRedPill] = useState(false);
+  const [hasClickedBluePill, setHasClickedBluePill] = useState(false);
 
-  const handleRedPillClick = () => navigate("/Contact");
-  const handleBluePillClick = () => navigate("/Projects");
+  const isMobile = window.innerWidth < 768;
 
-  useEffect(() => {
-    if (redPillAudioRef.current) redPillAudioRef.current.load();
-    if (bluePillAudioRef.current) bluePillAudioRef.current.load();
-  }, []);
-
-  useEffect(() => {
-    const adjustTitleFontSize = () => {
-      if (titleRef.current) {
-        const titleElement = titleRef.current;
-        const parentWidth = titleElement.parentElement.clientWidth;
-        let fontSize = 24; // Taille de base en pixels
-
-        // Ajuster la taille de la police jusqu'à ce que le texte rentre dans une seule ligne
-        while (titleElement.scrollWidth > parentWidth && fontSize > 10) {
-          fontSize -= 1;
-          titleElement.style.fontSize = `${fontSize}px`;
-        }
-      }
-    };
-
-    adjustTitleFontSize();
-    window.addEventListener("resize", adjustTitleFontSize);
-    return () => window.removeEventListener("resize", adjustTitleFontSize);
-  }, []);
+  const handleNavigation = (path, pillColor) => {
+    if (pillColor === "red" && !hasClickedRedPill) {
+      // Pour la première fois, jouer l'audio et ne pas naviguer
+      setHasClickedRedPill(true);
+    } else if (pillColor === "blue" && !hasClickedBluePill) {
+      // Pour la première fois, jouer l'audio et ne pas naviguer
+      setHasClickedBluePill(true);
+    } else {
+      // Si un autre clic (ou deuxième clic) : effectuer la navigation
+      navigate(path);
+    }
+  };
 
   const handleAudioPlay = (audioRef) => {
     if (!audioRef.current) return;
@@ -50,7 +38,7 @@ const Makeachoice = () => {
 
   return (
     <div className="w-full h-full bg-black">
-      <h1 ref={titleRef} className="pl-5 bg-black p-4">
+      <h1 className="pl-5 bg-black p-4">
         <TypingTitle
           text={
             "You take the blue pill: The story of this portfolio ends... but if you reach me out, we can uncover the truth together. \nYou take the red pill: You stay in Wonderland and I show you the depths of my Projects."
@@ -58,11 +46,14 @@ const Makeachoice = () => {
         />
       </h1>
 
-      <div className="flex w-full h-full">
-        {/* Partie droite (Red pill) */}
+      <div className="flex flex-col w-full h-full justify-between">
+        {/* Red pill */}
         <div
-          onMouseEnter={() => handleAudioPlay(bluePillAudioRef)}
-          onClick={handleRedPillClick}
+          onMouseEnter={() => !isMobile && handleAudioPlay(bluePillAudioRef)}
+          onClick={() => {
+            handleAudioPlay(bluePillAudioRef);
+            handleNavigation("/Contact", "blue");
+          }}
           className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all"
         >
           <img
@@ -75,10 +66,13 @@ const Makeachoice = () => {
           </div>
         </div>
 
-        {/* Partie gauche (Blue pill) */}
+        {/* Blue pill */}
         <div
-          onMouseEnter={() => handleAudioPlay(redPillAudioRef)}
-          onClick={handleBluePillClick}
+          onMouseEnter={() => !isMobile && handleAudioPlay(redPillAudioRef)}
+          onClick={() => {
+            handleAudioPlay(redPillAudioRef);
+            handleNavigation("/Projects", "red");
+          }}
           className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all"
         >
           <img
@@ -92,7 +86,7 @@ const Makeachoice = () => {
         </div>
       </div>
 
-      {/* Lecteurs audio séparés */}
+      {/* Lecteurs audio */}
       <audio ref={bluePillAudioRef} preload="auto" hidden>
         <source src="/assets/blue-pill.mp3" type="audio/mp3" />
       </audio>
