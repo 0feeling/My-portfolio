@@ -65,11 +65,7 @@ const Makeachoice = () => {
       </h1>
 
       {/* Pour desktop, les pills restent en flex-row. Pour mobile, on passe en flex-row pour les placer côte à côte */}
-      <div
-        className={`flex w-full ${
-          isMobile ? "flex-row" : "flex-row"
-        } h-[calc(100vh-100px)]`}
-      >
+      <div className={`flex w-full flex-row h-[calc(100vh-100px)]`}>
         {/* Red pill */}
         <div
           onMouseEnter={() => !isMobile && handleAudioPlay(redPillAudioRef)}
@@ -77,9 +73,7 @@ const Makeachoice = () => {
             handleAudioPlay(redPillAudioRef);
             handleNavigation("/Projects", "red");
           }}
-          className={`flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all ${
-            isMobile ? "order-1" : "order-2"
-          }`}
+          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all"
           style={{ height: isMobile ? "calc(100vh - 100px)" : "auto" }}
         >
           <img
@@ -103,9 +97,7 @@ const Makeachoice = () => {
             handleAudioPlay(bluePillAudioRef);
             handleNavigation("/Contact", "blue");
           }}
-          className={`flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all ${
-            isMobile ? "order-2" : "order-1"
-          }`}
+          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all"
           style={{ height: isMobile ? "calc(100vh - 100px)" : "auto" }}
         >
           <img
