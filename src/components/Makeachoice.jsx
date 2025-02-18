@@ -12,6 +12,7 @@ const Makeachoice = () => {
   const [hasClickedRedPill, setHasClickedRedPill] = useState(false);
   const [hasClickedBluePill, setHasClickedBluePill] = useState(false);
 
+  // Détermine si on est en mobile (<950)
   const isMobile = window.innerWidth < 950;
 
   useEffect(() => {
@@ -63,29 +64,12 @@ const Makeachoice = () => {
         />
       </h1>
 
+      {/* Pour desktop, les pills restent en flex-row. Pour mobile, on passe en flex-row pour les placer côte à côte */}
       <div
-        className={`flex w-full h-[calc(100vh-100px)] ${isMobile ? "flex-col" : "flex-row"}`}
+        className={`flex w-full ${
+          isMobile ? "flex-row" : "flex-row"
+        } h-[calc(100vh-100px)]`}
       >
-        {/* Blue pill */}
-        <div
-          onMouseEnter={() => !isMobile && handleAudioPlay(bluePillAudioRef)}
-          onClick={() => {
-            handleAudioPlay(bluePillAudioRef);
-            handleNavigation("/Contact", "blue");
-          }}
-          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all"
-          style={{ height: isMobile ? "calc((100vh - 100px) / 3)" : "auto" }}
-        >
-          <img
-            src="/assets/take-pill-bleu1.svg"
-            alt="Blue Pill"
-            className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
-          />
-          <div className="absolute text-white font-bold text-xl transform translate-x-[-20%] translate-y-[95%] md:text-3xl">
-            Contact
-          </div>
-        </div>
-
         {/* Red pill */}
         <div
           onMouseEnter={() => !isMobile && handleAudioPlay(redPillAudioRef)}
@@ -93,16 +77,48 @@ const Makeachoice = () => {
             handleAudioPlay(redPillAudioRef);
             handleNavigation("/Projects", "red");
           }}
-          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all"
-          style={{ height: isMobile ? "calc((100vh - 100px) / 3)" : "auto" }}
+          className={`flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all ${
+            isMobile ? "order-1" : "order-2"
+          }`}
+          style={{ height: isMobile ? "calc(100vh - 100px)" : "auto" }}
         >
           <img
-            src="/assets/take-pill-red1.svg"
+            src={
+              isMobile
+                ? "/assets/mobil-red-pill.svg"
+                : "/assets/take-pill-red1.svg"
+            }
             alt="Red Pill"
             className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
           />
           <div className="absolute text-white font-bold text-xl transform translate-x-[27%] translate-y-[95%] md:text-3xl">
             Projects
+          </div>
+        </div>
+
+        {/* Blue pill */}
+        <div
+          onMouseEnter={() => !isMobile && handleAudioPlay(bluePillAudioRef)}
+          onClick={() => {
+            handleAudioPlay(bluePillAudioRef);
+            handleNavigation("/Contact", "blue");
+          }}
+          className={`flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all ${
+            isMobile ? "order-2" : "order-1"
+          }`}
+          style={{ height: isMobile ? "calc(100vh - 100px)" : "auto" }}
+        >
+          <img
+            src={
+              isMobile
+                ? "/assets/mobil-blue-pill.svg"
+                : "/assets/take-pill-bleu1.svg"
+            }
+            alt="Blue Pill"
+            className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
+          />
+          <div className="absolute text-white font-bold text-xl transform translate-x-[-20%] translate-y-[95%] md:text-3xl">
+            Contact
           </div>
         </div>
       </div>
