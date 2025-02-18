@@ -9,11 +9,9 @@ const Makeachoice = () => {
   const [currentAudio, setCurrentAudio] = useState(null);
   const [hasClickedRedPill, setHasClickedRedPill] = useState(false);
   const [hasClickedBluePill, setHasClickedBluePill] = useState(false);
-  const [mobileHeight, setMobileHeight] = useState(window.innerHeight);
 
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 950;
 
-  // Gérer le clic sur les pilules
   const handleNavigation = (path, pillColor) => {
     if (pillColor === "red" && !hasClickedRedPill) {
       setHasClickedRedPill(true);
@@ -24,7 +22,6 @@ const Makeachoice = () => {
     }
   };
 
-  // Gérer la lecture des audios
   const handleAudioPlay = (audioRef) => {
     if (!audioRef.current) return;
     if (currentAudio && currentAudio !== audioRef.current) {
@@ -36,22 +33,8 @@ const Makeachoice = () => {
     setCurrentAudio(audioRef.current);
   };
 
-  // Calculer la hauteur disponible pour les pilules sur mobile
-  useEffect(() => {
-    const updateHeight = () => {
-      const titleHeight = document.querySelector("h1")?.offsetHeight || 0;
-      const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 0; // Si tu as une navbar, sinon mettre à 0
-      setMobileHeight(window.innerHeight - titleHeight - navbarHeight);
-    };
-
-    window.addEventListener("resize", updateHeight);
-    updateHeight(); // Initial calculation
-
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
-
   return (
-    <div className="w-full h-full bg-black flex flex-col">
+    <div className="w-full h-full bg-black">
       <h1 className="pl-5 bg-black p-4">
         <TypingTitle
           text={
@@ -61,17 +44,17 @@ const Makeachoice = () => {
       </h1>
 
       <div
-        className={`w-full h-full flex ${isMobile ? "flex-col" : "flex-row"}`}
+        className={`flex w-full h-[calc(100vh-100px)] ${isMobile ? "flex-col" : "flex-row"}`}
       >
-        {/* Blue pill en haut */}
+        {/* Blue pill */}
         <div
           onMouseEnter={() => !isMobile && handleAudioPlay(bluePillAudioRef)}
           onClick={() => {
             handleAudioPlay(bluePillAudioRef);
             handleNavigation("/Contact", "blue");
           }}
-          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all relative"
-          style={{ height: isMobile ? `${mobileHeight / 2}px` : "auto" }}
+          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-80 hover:bg-opacity-0 transition-all"
+          style={{ height: isMobile ? "calc((100vh - 100px) / 3)" : "auto" }}
         >
           <img
             src="/assets/take-pill-bleu1.svg"
@@ -83,15 +66,15 @@ const Makeachoice = () => {
           </div>
         </div>
 
-        {/* Red pill en bas */}
+        {/* Red pill */}
         <div
           onMouseEnter={() => !isMobile && handleAudioPlay(redPillAudioRef)}
           onClick={() => {
             handleAudioPlay(redPillAudioRef);
             handleNavigation("/Projects", "red");
           }}
-          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all relative"
-          style={{ height: isMobile ? `${mobileHeight / 2}px` : "auto" }}
+          className="flex-1 cursor-pointer flex justify-center items-center bg-black bg-opacity-100 hover:bg-opacity-0 transition-all"
+          style={{ height: isMobile ? "calc((100vh - 100px) / 3)" : "auto" }}
         >
           <img
             src="/assets/take-pill-red1.svg"
