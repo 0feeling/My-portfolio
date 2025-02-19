@@ -35,7 +35,6 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* H1 = lien vers la home */}
         <div className="flex items-center space-x-4">
-          {/* H1 = lien vers la home */}
           <NavLink
             to="/"
             className={`text-2xl font-mono ${getTextColor()} hover:opacity-80 transition-opacity duration-200`}
@@ -45,7 +44,7 @@ const Navbar = () => {
           {/* Bouton speaker */}
           <button
             onClick={toggleMute}
-            className="p-2 rounded-full hover:bg-black transition"
+            className={`p-2 ${getTextColor()} rounded-full hover:bg-black hover:border-current transition-all duration-200`}
           >
             {isMuted ? <FiVolumeX size={24} /> : <FiVolume2 size={24} />}
           </button>
@@ -68,10 +67,10 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `relative ${
                   isActive
-                    ? `${getTextColor()} text-active`
-                    : "hover:text-red-500 transition-colors duration-200"
-                } 
-    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-red-500`
+                    ? `${getTextColor()} text-active after:w-full after:bg-red-500`
+                    : `hover:text-red-500 transition-colors duration-200`
+                }
+    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300`
               }
             >
               Projects
@@ -83,10 +82,10 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `relative ${
                   isActive
-                    ? `${getTextColor()} text-active`
+                    ? `${getTextColor()} text-active after:w-full after:bg-yellow-400`
                     : "hover:text-yellow-400 transition-colors duration-200"
-                } 
-    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-yellow-400`
+                }
+                after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300`
               }
             >
               Stack
@@ -98,10 +97,10 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `relative ${
                   isActive
-                    ? `${getTextColor()} text-active`
+                    ? `${getTextColor()} text-active after:w-full after:bg-pink-400`
                     : "hover:text-pink-400 transition-colors duration-200"
-                } 
-    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-pink-400`
+                }
+                after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300`
               }
             >
               AboutMe
@@ -113,10 +112,10 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `relative ${
                   isActive
-                    ? `${getTextColor()} text-active`
+                    ? `${getTextColor()} text-active after:w-full after:bg-blue-400`
                     : "hover:text-blue-400 transition-colors duration-200"
-                } 
-    after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:bg-blue-400`
+                }
+                after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300`
               }
             >
               Contact

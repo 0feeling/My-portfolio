@@ -1,49 +1,39 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useAudio } from "./AudioContext";
 
 const AudioWithSegment = () => {
-  const [hasPlayed, setHasPlayed] = useState(false); // Suivi si l'audio a déjà été joué
-  const [duration, setDuration] = useState(0);
+  const [hasPlayed, setHasPlayed] = useState(false);
   const audioRef = useRef(null);
+  const { isMuted } = useAudio(); // Récupération du mute global
 
-  // Définition des moments de début et de fin du segment
   const startTime = 0;
   const endTime = 8.9;
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.onloadedmetadata = () => {
-        setDuration(audioRef.current.duration); // Récupère la durée totale de l'audio
-      };
+      audioRef.current.muted = isMuted; // Met à jour le mute
     }
-  }, []);
+  }, [isMuted]);
 
   const handleMouseEnter = () => {
-    // L'audio ne se déclenche que si ce n'est pas encore joué
-    if (audioRef.current && !hasPlayed) {
-      audioRef.current.currentTime = startTime; // Définit le temps de départ
+    if (audioRef.current && !hasPlayed && !isMuted) {
+      // Vérifie si le son est activé
+      audioRef.current.currentTime = startTime;
       audioRef.current.play();
-      setHasPlayed(true); // Marque l'audio comme joué
+      setHasPlayed(true);
     }
   };
 
   const handleTimeUpdate = () => {
     if (audioRef.current && audioRef.current.currentTime >= endTime) {
-      audioRef.current.pause(); // Pause lorsque le segment est terminé
-      audioRef.current.currentTime = startTime; // Remet à startTime pour rejouer le segment
+      audioRef.current.pause();
+      audioRef.current.currentTime = startTime;
     }
   };
 
   return (
-    <div
-      onMouseEnter={handleMouseEnter} // Lancer l'audio uniquement la première fois au hover
-      style={{ height: "100vh" }} // Assure-toi que l'élément parent prend toute la hauteur de la page
-    >
-      <audio
-        ref={audioRef}
-        hidden // Cache le lecteur
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={() => {}} // Ne réinitialise rien ici
-      >
+    <div onMouseEnter={handleMouseEnter} style={{ height: "100vh" }}>
+      <audio ref={audioRef} hidden onTimeUpdate={handleTimeUpdate}>
         <source src="/assets/hello-traveller1.mp3" type="audio/mp3" />
         Votre navigateur ne supporte pas la lecture audio.
       </audio>

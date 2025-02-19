@@ -1,14 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AudioWithSegment from "./AudioWithSegment";
+import { useAudio } from "./AudioContext";
 
 const Projects = () => {
   const [hovered, setHovered] = useState(false);
   const [delayedHover, setDelayedHover] = useState(false);
   const [audioTriggered, setAudioTriggered] = useState(false);
   const navigate = useNavigate();
+  const isMobile = window.innerWidth < 768;
+  const halAudioRef = useRef(null);
+  const { isMuted } = useAudio();
 
   const hal9000Height = `calc(100vh - 80px)`;
+
+  useEffect(() => {
+    if (halAudioRef.current) {
+      halAudioRef.current.muted = isMuted;
+      if (isMuted) {
+        halAudioRef.current.pause(); // Coupe le son immédiatement
+      }
+    }
+  }, [isMuted]);
+
+  const handleAudioPlay = () => {
+    if (halAudioRef.current) {
+      halAudioRef.current.currentTime = 0;
+      halAudioRef.current.play();
+    }
+  };
 
   useEffect(() => {
     let timeout;
@@ -27,6 +47,7 @@ const Projects = () => {
   const handleMouseEnter = () => {
     if (!audioTriggered) {
       setAudioTriggered(true);
+      handleAudioPlay();
     }
   };
 
