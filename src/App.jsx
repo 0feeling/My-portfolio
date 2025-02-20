@@ -13,6 +13,7 @@ import Makeachoice from "./components/Makeachoice";
 import Stack from "./components/Stack";
 import AboutMe from "./components/AboutMe";
 import { AudioProvider } from "./components/AudioContext";
+import AudioModal from "./components/AudioModal";
 
 const App = () => {
   return (

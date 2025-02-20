@@ -1,10 +1,12 @@
 import React from "react";
 import TypingTitle from "./TypingTitle";
 import RabbitAnimation from "./RabbitAnimation";
+import AudioModal from "./AudioModal";
 
 const Hero = () => {
   return (
     <section className="text-main flex flex-col justify-center items-center text-center font-mono">
+      <AudioModal audioSrc="/path/to/audio.mp3" />
       <div className="bg-black py-10 px-20">
         <h1 className="text-4xl md:text-6xl font-mono">
           <TypingTitle text="Welcome to the Real" />
