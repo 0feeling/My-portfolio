@@ -85,7 +85,7 @@ const Makeachoice = () => {
             alt="Blue Pill"
             className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
           />
-          <div className="absolute text-white font-bold text-xl transform translate-x-[-20%] translate-y-[95%] md:text-3xl">
+          <div className="absolute text-white bg-black/80 font-bold text-xl transform translate-x-[-20%] translate-y-[95%] md:text-3xl">
             Contact
           </div>
         </div>
@@ -108,7 +108,7 @@ const Makeachoice = () => {
             alt="Red Pill"
             className="w-full h-full object-cover opacity-80 filter brightness-[10%] hover:brightness-100 transition-all"
           />
-          <div className="absolute text-white font-bold text-xl transform translate-x-[27%] translate-y-[95%] md:text-3xl">
+          <div className="absolute text-white bg-black/80 font-bold text-xl transform translate-x-[27%] translate-y-[95%] md:text-3xl">
             Projects
           </div>
         </div>
