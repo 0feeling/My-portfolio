@@ -84,13 +84,14 @@ const Projects = () => {
       className: ""
     },
     {
-      title: "Project 4",
-      description: "Project",
+      title: "Terra Voyager",
+      description: "Random country selector",
       top: "9vh",
       bottom: "auto",
       left: "23vw",
       translate: "translate(200px, 200px)",
-      delay: "0.8s"
+      delay: "0.8s",
+      url: "https://terra-voyager.netlify.app/"
     }
   ];
 
