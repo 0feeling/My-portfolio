@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TypingTitle from "./TypingTitle";
 import RabbitAnimation from "./RabbitAnimation";
 import AudioModal from "./AudioModal";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
@@ -16,7 +17,7 @@ const Hero = () => {
   }, []);
 
   const startAnimation = () => {
-    // Logic to start animation (if needed)
+    navigate("/Spaceship");
   };
 
   return (
@@ -33,7 +34,7 @@ const Hero = () => {
       {isMobile && (
         <button
           onClick={startAnimation}
-          className="z-50 mt-8 px-8 py-8 rounded-full border-2 bg-black border-main text-main hover:bg-main border-black hover:text-black transition-colors duration-300"
+          className="mt-8 px-8 py-8 rounded-full border-2 bg-black border-main text-main hover:bg-main hover:text-black transition-colors duration-300"
         >
           The Rabbit&apos;s Hole
         </button>
