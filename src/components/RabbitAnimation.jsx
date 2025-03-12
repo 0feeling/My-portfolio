@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Hook pour la navigation
+import { useNavigate } from "react-router-dom";
 
 const RabbitAnimation = ({ className = "" }) => {
-  const navigate = useNavigate(); // Hook pour naviguer vers une autre page
+  const navigate = useNavigate();
 
-  // Gestion du rendu en fonction de la taille d'écran
-  const [isMobile, setIsMobile] = useState(false);
+  // Vérification si l'écran est mobile dès le premier rendu
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
+
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 950); // Change le seuil si besoin
+      setIsMobile(window.innerWidth < 950); // Détecte la taille de l'écran et met à jour l'état
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+
+    window.addEventListener("resize", checkMobile); // Écoute le redimensionnement de la fenêtre
+    return () => window.removeEventListener("resize", checkMobile); // Nettoyage au démontage
   }, []);
 
-  if (isMobile) return <div className={className}></div>;
-
-  const svgCoordinates = {
-    top: 60, // coordonnée y initiale
-    left: 1300 // coordonnée x initiale
-  };
-
-  const [showSvg, setShowSvg] = useState(false);
-  const [svgIndex, setSvgIndex] = useState(0);
+  const svgCoordinates = { top: 60, left: 1300 }; // Position initiale du premier SVG
+  const [showSvg, setShowSvg] = useState(false); // Contrôle de l'affichage des SVGs animés
+  const [svgIndex, setSvgIndex] = useState(0); // Index pour parcourir les SVGs
   const [animations, setAnimations] = useState([]); // Garder une trace des animations
-  const [hideInitialSvg, setHideInitialSvg] = useState(false); // État pour cacher le lapin initial
 
   const svgPositions = [
     { top: 50, left: 1200 },
@@ -43,37 +37,35 @@ const RabbitAnimation = ({ className = "" }) => {
     "/assets/img/wrabbit5.2.svg"
   ];
 
+  // Effet pour animer les SVGs dès qu'on commence
   useEffect(() => {
     if (showSvg && svgIndex < svgPositions.length) {
-      // Démarre l'animation quand svgIndex change
       const timeout = setTimeout(() => {
         setAnimations((prev) => [...prev, svgIndex]);
         setSvgIndex((prev) => prev + 1);
-        if (svgIndex === 0) {
-          setHideInitialSvg(true); // Cacher le lapin initial lorsque le deuxième lapin apparaît
-        }
-      }, 100); // Change l'image toutes les x secondes
-      return () => clearTimeout(timeout); // Nettoyer le timeout si le composant se démonte
+      }, 100); // Intervalle de temps pour changer les images
+      return () => clearTimeout(timeout); // Nettoyer l'effet de timeout
     }
   }, [showSvg, svgIndex]);
 
+  // Fonction pour démarrer l'animation et ensuite rediriger
   const startAnimation = () => {
-    setShowSvg(true); // Démarre l'animation des SVG
-    setSvgIndex(0); // Commence avec le premier SVG
-
-    // Ajouter un délai avant redirection
+    setShowSvg(true);
+    setSvgIndex(0); // On commence l'animation avec le premier SVG
     setTimeout(() => {
-      navigate("./Spaceship"); // Redirection
-    }, 2000); // temps en ms avant changement de page
+      navigate("./Spaceship"); // Redirection après l'animation
+    }, 2000);
   };
 
   return (
-    <div className={`h-full w-full relative ${className}`}>
-      {/* Lapin initial */}
-      {!hideInitialSvg && (
+    <div
+      className={`h-full w-full relative ${isMobile ? "hidden" : className}`}
+    >
+      {/* Affichage du premier lapin avant l'animation */}
+      {!showSvg && (
         <img
           src="/assets/img/wrabbit7.svg"
-          alt="Mon SVG"
+          alt="Lapin initial"
           className="absolute initial-svg"
           style={{
             top: `${svgCoordinates.top}px`,
@@ -84,23 +76,24 @@ const RabbitAnimation = ({ className = "" }) => {
         />
       )}
 
-      {/* Lapins animés */}
+      {/* Affichage des lapins animés après démarrage */}
       {showSvg &&
         animations.map((index) => (
           <img
             key={index}
             src={svgPaths[index]}
-            alt="Mon SVG"
-            className={`absolute svg-animation-${index}`}
+            alt="Lapin animé"
+            className="absolute svg-animation"
             style={{
-              top: `${svgPositions[index]?.top}px`,
-              left: `${svgPositions[index]?.left}px`
+              top: `${svgPositions[index].top}px`,
+              left: `${svgPositions[index].left}px`
             }}
             width="128"
             height="128"
           />
         ))}
 
+      {/* Bouton pour démarrer l'animation */}
       <button
         onClick={startAnimation}
         className="z-50 mt-8 px-8 py-8 rounded-full border-2 bg-black border-main text-main hover:bg-main border-black hover:text-black transition-colors duration-300"
@@ -108,7 +101,7 @@ const RabbitAnimation = ({ className = "" }) => {
         The Rabbit&apos;s Hole
       </button>
 
-      {/* Styles CSS pour animation */}
+      {/* Styles CSS pour l'animation */}
       <style>{`
         @keyframes svgMove {
           0% {
@@ -125,19 +118,7 @@ const RabbitAnimation = ({ className = "" }) => {
           }
         }
 
-        .svg-animation-0 {
-          animation: svgMove 1s ease-out forwards;
-        }
-        .svg-animation-1 {
-          animation: svgMove 1s ease-out forwards;
-        }
-        .svg-animation-2 {
-          animation: svgMove 1s ease-out forwards;
-        }
-        .svg-animation-3 {
-          animation: svgMove 1s ease-out forwards;
-        }
-        .svg-animation-4 {
+        .svg-animation {
           animation: svgMove 1s ease-out forwards;
         }
 
