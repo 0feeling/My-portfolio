@@ -29,7 +29,7 @@ const AudioModal = ({ audioSrc }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-85 z-50">
-      <div className="bg-black border-2 border-main p-6 rounded-2xl shadow-xl max-w-md w-full text-center">
+      <div className="bg-black border-2 border-main flex-col p-6 rounded-2xl shadow-xl max-w-md w-full text-center">
         <TypingTitle
           text="Le son est une clé.
 Entendre, c'est comprendre.

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Hook pour la navigation
 
-const RabbitAnimation = () => {
+const RabbitAnimation = ({ className = "" }) => {
   const navigate = useNavigate(); // Hook pour naviguer vers une autre page
 
   // Gestion du rendu en fonction de la taille d'écran
@@ -69,7 +69,7 @@ const RabbitAnimation = () => {
   };
 
   return (
-    <div className="h-full w-full relative">
+    <div className={`h-full w-full relative ${className}`}>
       {/* Lapin initial */}
       {!hideInitialSvg && (
         <img

@@ -80,13 +80,12 @@ const Projects = () => {
       left: "10vw",
       translate: "translate(-200px, 200px)",
       delay: "0.6s",
-      url: "https://harry-potter-vault.netlify.app/",
-      className: ""
+      url: "https://harry-potter-vault.netlify.app/"
     },
     {
       title: "Terra Voyager",
       description: "Random country selector",
-      top: "9vh",
+      top: "8vh",
       bottom: "auto",
       left: "23vw",
       translate: "translate(200px, 200px)",
