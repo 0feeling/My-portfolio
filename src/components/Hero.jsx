@@ -12,7 +12,7 @@ const Hero = () => {
           <TypingTitle text="Welcome to the Real" />
         </h1>
       </div>
-      <RabbitAnimation className="sm:hidden md:hidden" />
+      <RabbitAnimation className="hidden sm:block md:block" />
       <div className="mt-12 bg-black py-10 px-20">
         <p className="md:text-3xl font-mono">
           Are you ready to travel with me?
