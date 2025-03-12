@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
+  const navigate = useNavigate(); // Initialisation de useNavigate
 
   useEffect(() => {
     const checkMobile = () => {
@@ -17,7 +18,7 @@ const Hero = () => {
   }, []);
 
   const startAnimation = () => {
-    navigate("/Spaceship");
+    navigate("/Spaceship"); // Utilisation de navigate après son initialisation
   };
 
   return (
