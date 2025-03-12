@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TypingTitle from "./TypingTitle";
 import RabbitAnimation from "./RabbitAnimation";
 import AudioModal from "./AudioModal";
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 950);
+    };
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const startAnimation = () => {
+    // Logic to start animation (if needed)
+  };
+
   return (
     <section className="text-main flex flex-col justify-center items-center text-center font-mono">
       <AudioModal audioSrc="/path/to/audio.mp3" />
@@ -13,6 +28,17 @@ const Hero = () => {
         </h1>
       </div>
       <RabbitAnimation className="hidden sm:block md:block" />
+
+      {/* Afficher le bouton uniquement sur mobile */}
+      {isMobile && (
+        <button
+          onClick={startAnimation}
+          className="z-50 mt-8 px-8 py-8 rounded-full border-2 bg-black border-main text-main hover:bg-main border-black hover:text-black transition-colors duration-300"
+        >
+          The Rabbit&apos;s Hole
+        </button>
+      )}
+
       <div className="mt-12 bg-black py-10 px-20">
         <p className="md:text-3xl font-mono">
           Are you ready to travel with me?
