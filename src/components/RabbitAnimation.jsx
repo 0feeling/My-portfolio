@@ -15,8 +15,7 @@ const RabbitAnimation = ({ className = "" }) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Ne rien rendre sur mobile
-  if (isMobile) return null;
+  if (isMobile) return <div className={className}></div>;
 
   const svgCoordinates = {
     top: 60, // coordonnée y initiale
