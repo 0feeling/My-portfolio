@@ -29,7 +29,7 @@ const ProjectsMobile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-white px-4">
+    <div className="min-h-screen flex items-center justify-center mt-8 mb-8 text-white px-4">
       <div
         className="w-full max-w-3xl p-6 bg-gray-900 rounded-xl shadow-lg border border-red-500 relative overflow-hidden
                       before:absolute before:inset-0 before:bg-red-500 before:opacity-10 before:blur-lg"
@@ -51,12 +51,14 @@ const ProjectsMobile = () => {
           ))}
         </div>
 
-        <button
-          className="mt-6 px-4 py-2 bg-red-600 rounded-full text-white hover:bg-red-700 transition"
-          onClick={() => navigate("/")}
-        >
-          Retour
-        </button>
+        <div className="flex justify-center items-center">
+          <button
+            className="mt-6 px-4 py-2 bg-red-600 rounded-full text-white hover:bg-red-700 transition"
+            onClick={() => navigate("/")}
+          >
+            Retour
+          </button>
+        </div>
       </div>
     </div>
   );

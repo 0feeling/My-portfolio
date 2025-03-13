@@ -3,7 +3,7 @@ import TypingTitle from "./TypingTitle";
 
 const AboutMe = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center text-white px-4">
+    <div className="min-h-screen flex items-center mb-8 mt-8 justify-center text-white px-4">
       <div
         className="w-full max-w-3xl p-6 bg-gray-900 rounded-xl shadow-lg border border-pink-500 relative overflow-hidden
                       before:absolute before:inset-0 before:bg-pink-500 before:opacity-10 before:blur-lg"
