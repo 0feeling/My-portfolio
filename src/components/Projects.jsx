@@ -13,16 +13,6 @@ const Projects = () => {
   const { isMuted } = useAudio();
 
   const hal9000Height = `calc(100vh - 80px)`;
-  const adjustedTop =
-    !isNaN(parseFloat(top)) && parseFloat(top) > 100 - parseFloat(hal9000Height)
-      ? "100%"
-      : top;
-
-  const adjustedBottom =
-    !isNaN(parseFloat(bottom)) &&
-    parseFloat(bottom) > 100 - parseFloat(hal9000Height)
-      ? "100%"
-      : bottom;
 
   useEffect(() => {
     if (halAudioRef.current) {
