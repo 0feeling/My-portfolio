@@ -29,9 +29,9 @@ const ProjectsMobile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center mt-8 mb-8 text-white px-4">
+    <div className="min-h-screen mt-12 mb-12 flex items-center justify-center text-white px-4">
       <div
-        className="w-full max-w-3xl p-6 bg-gray-900 rounded-xl shadow-lg border border-red-500 relative overflow-hidden
+        className="w-full max-w-3xl p-6 bg-gray-900 mt-8 mb-8 rounded-xl shadow-lg border border-red-500 relative overflow-hidden
                       before:absolute before:inset-0 before:bg-red-500 before:opacity-10 before:blur-lg"
       >
         <h1 className="text-2xl md:text-3xl font-extrabold text-red-500 text-center mb-6 tracking-widest uppercase">
