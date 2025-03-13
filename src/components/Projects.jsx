@@ -93,7 +93,7 @@ const Projects = () => {
     },
     {
       title: "Terra Voyager",
-      description: "Random Country Celector",
+      description: "Random Country Selector",
       top: "8vh",
       bottom: "auto",
       left: "23vw",

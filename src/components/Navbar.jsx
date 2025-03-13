@@ -17,6 +17,8 @@ const Navbar = () => {
     switch (location.pathname) {
       case "/Projects":
         return "text-red-500";
+      case "/Projects-mobile":
+        return "text-red-500";
       case "/Spaceship":
         return "text-white";
       case "/Contact":
