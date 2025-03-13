@@ -8,6 +8,7 @@ import "./index.css";
 import Navbar from "./components/Navbar";
 import Spaceship from "./components/Spaceship";
 import Projects from "./components/Projects";
+import ProjectsMobile from "./components/ProjectsMobile";
 import Contact from "./components/Contact";
 import Makeachoice from "./components/Makeachoice";
 import Stack from "./components/Stack";
