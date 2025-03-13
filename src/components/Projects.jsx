@@ -13,6 +13,16 @@ const Projects = () => {
   const { isMuted } = useAudio();
 
   const hal9000Height = `calc(100vh - 80px)`;
+  const adjustedTop =
+    !isNaN(parseFloat(top)) && parseFloat(top) > 100 - parseFloat(hal9000Height)
+      ? "100%"
+      : top;
+
+  const adjustedBottom =
+    !isNaN(parseFloat(bottom)) &&
+    parseFloat(bottom) > 100 - parseFloat(hal9000Height)
+      ? "100%"
+      : bottom;
 
   useEffect(() => {
     if (halAudioRef.current) {
@@ -40,9 +50,18 @@ const Projects = () => {
     return () => clearTimeout(timeout);
   }, [hovered]);
 
-  const handleClick = () => {
-    navigate("/nextpage");
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        navigate("/projects-mobile");
+      }
+    };
+
+    handleResize(); // Exécute immédiatement au montage
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [navigate]);
 
   const handleMouseEnter = () => {
     if (!audioTriggered) {
@@ -74,7 +93,7 @@ const Projects = () => {
     },
     {
       title: "Harry Potter",
-      description: "Character's Searching",
+      description: "Character's Finder",
       top: "8vh",
       bottom: "auto",
       left: "10vw",
@@ -84,7 +103,7 @@ const Projects = () => {
     },
     {
       title: "Terra Voyager",
-      description: "Random country selector",
+      description: "Random Country Celector",
       top: "8vh",
       bottom: "auto",
       left: "23vw",
@@ -119,7 +138,7 @@ const Projects = () => {
             src="/assets/img/HAL9000.svg"
             alt="HAL9000"
             className="cursor-pointer"
-            onClick={handleClick}
+            // onClick={handleClick}
             style={{
               width: "auto",
               height: hal9000Height,
