@@ -53,7 +53,7 @@ const Projects = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        navigate("/projects-mobile");
+        navigate("/Projects-mobile");
       }
     };
 
@@ -185,6 +185,7 @@ const Projects = () => {
                     transform: delayedHover
                       ? `translate(-50%, -50%) ${translate}`
                       : "translate(-50%, -50%)",
+
                     transitionDelay: hovered ? delay : "0.3s"
                   }}
                   onClick={() => window.open(url, "_blank")}
